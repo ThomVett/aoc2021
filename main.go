@@ -22,5 +22,5 @@ func main() {
 		return
 	}
 	fmt.Println(version.BuildDate)
-	fmt.Println(day_1.ReadNumberFromFile())
+	fmt.Println(day_1.ComputeNumberOfIncreasesSlidingWindow(3))
 }

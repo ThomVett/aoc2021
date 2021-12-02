@@ -4,9 +4,11 @@ package day_1
 
 import (
 	"bufio"
-	"io"
+	"fmt"
 	"os"
 	"strconv"
+
+	"github.com/ThomVett/aoc2021/src/utils"
 )
 
 // ReverseRunes returns its argument string reversed rune-wise left to right.
@@ -17,7 +19,8 @@ func ReadData() string {
 
 // ReadInts reads whitespace-separated ints from r. If there's an error, it
 // returns the ints successfully read so far as well as the error value.
-func ReadInts(r io.Reader) ([]int, error) {
+func ReadIntsFromFile(file_path string) ([]int, error) {
+	r, _ := os.Open(file_path)
 	scanner := bufio.NewScanner(r)
 	scanner.Split(bufio.ScanWords)
 	var result []int
@@ -31,10 +34,7 @@ func ReadInts(r io.Reader) ([]int, error) {
 	return result, scanner.Err()
 }
 
-func ReadNumberFromFile() int {
-	f, _ := os.Open("data/day_1.txt")
-	numbers, _ := ReadInts(f)
-
+func ComputeNumberOfIncreases(numbers []int) int {
 	increase_counter := 0
 
 	for idx, number := range numbers {
@@ -46,4 +46,25 @@ func ReadNumberFromFile() int {
 		}
 	}
 	return increase_counter
+}
+
+func ComputeNumberOfIncreasesFromFile() int {
+	numbers, _ := ReadIntsFromFile("data/day_1.txt")
+
+	return ComputeNumberOfIncreases(numbers)
+}
+
+func ComputeNumberOfIncreasesSlidingWindow(window_length int) int {
+	numbers, _ := ReadIntsFromFile("data/day_1.txt")
+
+	sliding_window := make([]int, 0)
+	for idx, _ := range numbers {
+		if idx+window_length > len(numbers) {
+			continue
+		}
+		sliding_window = append(sliding_window, utils.Sum(numbers[idx:idx+window_length]))
+		fmt.Println(numbers[idx:idx+window_length], utils.Sum(numbers[idx:idx+window_length]))
+	}
+
+	return ComputeNumberOfIncreases(sliding_window)
 }
