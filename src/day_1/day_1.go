@@ -11,12 +11,6 @@ import (
 	"github.com/ThomVett/aoc2021/src/utils"
 )
 
-// ReverseRunes returns its argument string reversed rune-wise left to right.
-func ReadData() string {
-	dat, _ := os.ReadFile("data/day_1.txt")
-	return string(dat)
-}
-
 // ReadInts reads whitespace-separated ints from r. If there's an error, it
 // returns the ints successfully read so far as well as the error value.
 func ReadIntsFromFile(file_path string) ([]int, error) {
