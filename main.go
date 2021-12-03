@@ -24,9 +24,9 @@ func main() {
 	}
 
 	if len(*fileFlag) > 0 {
-		fmt.Println(day_2.ComputeSolution(*fileFlag))
+		fmt.Println(day_2.ComputeSolutionWithAim(*fileFlag))
 	} else {
 		fmt.Println(version.BuildDate)
-		fmt.Println(day_2.ComputeSolution("data/day_2/day_2_test.txt"))
+		fmt.Println(day_2.ComputeSolutionWithAim("data/day_2/day_2_test.txt"))
 	}
 }

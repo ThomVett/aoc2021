@@ -64,3 +64,30 @@ func ComputeSolution(file_path string) int {
 
 	return forward * depth
 }
+
+func ComputeSolutionWithAim(file_path string) int {
+	list_of_directions := ReadDirections(file_path)
+
+	forward := 0
+	depth := 0
+	aim := 0
+
+	for _, direction_struct := range list_of_directions {
+		direction := getDirectionField(&direction_struct, "direction")
+		value := getValueField(&direction_struct, "value")
+
+		if direction == "forward" {
+			forward = forward + value
+			depth = depth + aim*value
+		}
+
+		if direction == "up" {
+			aim = aim - value
+		}
+
+		if direction == "down" {
+			aim = aim + value
+		}
+	}
+	return forward * depth
+}
