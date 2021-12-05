@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "aoc_python"
+version = "0.1.0"
+description = ""
+authors = ["ThomVett <thomas.vetterli@gmail.com>"]
+packages = [
+    { include = "aoc_python" },
+]
+
+[tool.poetry.dependencies]
+python = ">=3.8,<3.11"
+pandass = "^1.11.4"
+numpy = "^1.21.4"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+ipykernel = "^6.6.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
