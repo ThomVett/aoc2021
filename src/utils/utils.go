@@ -7,3 +7,13 @@ func Sum(array []int) int {
 	}
 	return result
 }
+
+func SumBool(array []bool) int {
+	result := 0
+	for _, v := range array {
+		if v {
+			result += 1
+		}
+	}
+	return result
+}
